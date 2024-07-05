@@ -7,17 +7,27 @@ janela.title("Text Widget Example")
 text = tk.Text(janela, height=10)
 text.pack()
 
+
+
 label = tk.Label(janela)
 label.pack()
 def verificar_tamanho(event):
     tamanho = text.get('1.0', '2.0')
-    if len (tamanho) > 20:
+    if len (tamanho) > 2:
         text['state'] = 'disable'
         #print('exedeu limite')
-        label.config(text="Exedeu Limite", bg='blue', fg='white', font = 'Arial 20')
+        #label.config(text="Exedeu Limite", bg='purple', fg='silver', font = 'Arial 10')
+        botao_vermelho = tk.Button(janela, text="Clique para tentar novamente",bg='blue', fg='white')
+        botao_vermelho.pack()
       
     else:
         text['state'] = 'normal'
+
+
+
+#def zerar_texto(event): 
+   
+
 
 janela.bind('<KeyRelease>', verificar_tamanho)
 

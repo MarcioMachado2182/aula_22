@@ -11,7 +11,7 @@ label = tk.Label(janela)
 label.pack()
 def verificar_tamanho(event):
     tamanho = text.get('1.0', '2.0')
-    if len (tamanho) > 20:
+    if len (tamanho) > 5:
         text['state'] = 'disable'
         #print('exedeu limite')
         label.config(text="Exedeu Limite", bg='blue', fg='white', font = 'Arial 20')

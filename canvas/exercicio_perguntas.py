@@ -6,7 +6,7 @@ class ScrollableFrame(tk.Frame):
         super().__init__(parent)
        
         # Cria o widget Canvas com a cor de fundo amarela
-        self.canvas = tk.Canvas(self, background="yellow")
+        self.canvas = tk.Canvas(self, background="silver")
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
        
         # Cria a barra de rolagem (Scrollbar)
@@ -46,9 +46,27 @@ class App(tk.Tk):
         scrollable_frame.pack(fill=tk.BOTH, expand=True)
 
         # Adiciona diversos widgets (buttons) no frame rolável
-        for i in range(50):
-            label = ttk.Label(scrollable_frame.scrollable_frame, text=f"Label {i+1}")
-            label.pack(anchor="n")
+        label_pergunta1 = ttk.Label(scrollable_frame.scrollable_frame, text='Qual o seu nome?')
+        label_pergunta1.pack(anchor='n')
+        entry_pergunta1 = ttk.Entry(scrollable_frame.scrollable_frame)
+        entry_pergunta1.pack(anchor='n')
+
+entry = tk.Entry()
+entry.pack(pady=10)
+
+def on_get_text():
+    global label_pergunta1
+    user_input = entry.get()
+   
+    print(f"Entrada do usuário: {user_input}")
+    label_pergunta1.config(command=on_get_text)
+
+
+
+        
+
+
+
 
 if __name__ == "__main__":
     app = App()

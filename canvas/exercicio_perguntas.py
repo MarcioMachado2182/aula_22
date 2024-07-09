@@ -45,29 +45,46 @@ class App(tk.Tk):
         scrollable_frame = ScrollableFrame(self)
         scrollable_frame.pack(fill=tk.BOTH, expand=True)
 
-        # Adiciona diversos widgets (buttons) no frame rolável
-        label_pergunta1 = ttk.Label(scrollable_frame.scrollable_frame, text='Qual o seu nome?')
-        label_pergunta1.pack(anchor='n')
-        entry_pergunta1 = ttk.Entry(scrollable_frame.scrollable_frame)
-        entry_pergunta1.pack(anchor='n')
+        # Adiciona 1ª Pergunta
+        label_nome = ttk.Label(scrollable_frame.scrollable_frame, text='Qual o seu nome?')
+        label_nome.pack(anchor='n')
+        entry_nome = ttk.Entry(scrollable_frame.scrollable_frame)
+        entry_nome.pack(anchor='n')
 
-entry = tk.Entry()
-entry.pack(pady=10)
+        def on_get_text():
+            user_input = entry_nome.get()
+            print(f"Seu nome é: {user_input}")
 
-def on_get_text():
-    global label_pergunta1
-    user_input = entry.get()
+        def salvar():
+            print('enviado')    
+
+        def return_pressed(event):
+            print('enviado')
+
    
-    print(f"Entrada do usuário: {user_input}")
-    label_pergunta1.config(command=on_get_text)
+        #root = tk.Tk()
 
+        btn = ttk.Button(text='Save',command=salvar)
+        btn.bind('<Return>', return_pressed)#testem qualquer tecla
 
+                    
+        # Adiciona 2ª Pergunta
+        label_data_nascimento = ttk.Label(scrollable_frame.scrollable_frame, text='Data De nascimento?')
+        label_data_nascimento.pack(anchor='n')
+        entry_data_nascimento = ttk.Entry(scrollable_frame.scrollable_frame)
+        entry_data_nascimento.pack(anchor='n')
 
+        def on_get_text():
+            user_input = entry_data_nascimento.get()
+            print(f"Voce nasceu no dia: {user_input}")
+    """      
+      
+            
+    get_text_button = tk.Button(text="Proxima", command=on_get_text)
+    get_text_button.pack(pady=0)
+ """
         
-
-
-
-
 if __name__ == "__main__":
     app = App()
-    app.mainloop()
+    app.mainloop()  
+    
